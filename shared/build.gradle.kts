@@ -40,25 +40,32 @@ kotlin {
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.insert-koin:koin-core:${koinVersion}")
+                implementation("io.insert-koin:koin-android:${koinVersion}")
                 api("dev.icerock.moko:mvvm-core:0.13.1")
 //                implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 //                implementation ("org.jetbrains.kotlin:kotlin-serialization-compiler-plugin-embeddable:1.5.21")
-
-
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-            }
-        }
-        val iosMain by getting {
-            dependencies {
-
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
+            }
+        }
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
     }
