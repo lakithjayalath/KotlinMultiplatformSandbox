@@ -12,7 +12,7 @@ kotlin {
     android {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
@@ -28,7 +28,7 @@ kotlin {
     }
 
     val ktorVersion = "2.3.2"
-    val koinVersion = "3.4.2"
+    val koinVersion = "3.4.0"
 
     sourceSets {
         val commonMain by getting {
@@ -39,6 +39,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+//                implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.insert-koin:koin-core:${koinVersion}")
                 implementation("io.insert-koin:koin-android:${koinVersion}")
                 api("dev.icerock.moko:mvvm-core:0.13.1")
@@ -53,20 +54,33 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
+//                implementation("io.ktor:ktor-client-android:$ktorVersion")
+//                implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
             }
         }
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
-        val iosMain by creating {
+        val iosMain by getting {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+//                implementation("io.ktor:ktor-client-logging-native:$ktorVersion")
             }
+        }
+
+        val iosX64Test by getting
+        val iosArm64Test by getting
+        val iosSimulatorArm64Test by getting
+        val iosTest by getting {
+            dependsOn(commonTest)
+            iosX64Test.dependsOn(this)
+            iosArm64Test.dependsOn(this)
+            iosSimulatorArm64Test.dependsOn(this)
         }
     }
 }
@@ -76,5 +90,9 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 21
+    }
+    compileOptions {
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_17
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_17
     }
 }

@@ -30,11 +30,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_17
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -49,7 +49,9 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.1.1")
     val ktorVersion = "2.3.2"
     implementation ("io.ktor:ktor-client-okhttp:$ktorVersion")
-    val koinVersion = "3.4.2"
+    val koinVersion = "3.4.0"
     implementation("io.insert-koin:koin-core:${koinVersion}")
     implementation("io.insert-koin:koin-android:${koinVersion}")
+    val koinComposeVersion = "3.4.3"
+    implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
 }
