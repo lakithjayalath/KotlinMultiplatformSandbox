@@ -9,11 +9,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
@@ -62,6 +65,21 @@ class MainActivity : ComponentActivity() {
                                 )
                             },
                         )
+                    },
+                    bottomBar = {
+                        BottomAppBar (
+                            backgroundColor = Color.DarkGray,
+                            contentColor = Color.White,
+                        ) {
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                textAlign = TextAlign.Center,
+                                text = "Welcome!!",
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                        }
                     }
                 ) { padding ->
                     var text by remember { mutableStateOf("Loading") }
@@ -88,8 +106,24 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxSize(1.0f) // it will fill parent box
                                 .padding(8.dp),// padding will help us to give some margin between our text and parent if text greater then our parent size
                         ) { // contentAlignment will align its content as provided Alignment in our case it's Center
-                            Column {
+                            Column (
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ){
                                 ElevatedCardExample(text, array)
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Button(
+                                    onClick = { /*TODO*/ },
+                                    colors = ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Yellow),
+                                    shape = CircleShape,
+                                    modifier = Modifier.size(84.dp, 84.dp)) {
+                                    Text(
+                                        text = "Go to Profile",
+                                        fontWeight = FontWeight.Bold,
+                                        textAlign = TextAlign.Center,
+                                        color = Color.Black
+                                    )
+                                }
                             }
                         }
                         if (showBottomSheet) {

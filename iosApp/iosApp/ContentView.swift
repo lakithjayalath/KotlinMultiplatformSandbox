@@ -6,6 +6,9 @@ struct ContentView: View {
 
         var body: some View {
             Text(viewModel.text)
+                .foregroundColor(.blue)
+                .font(.title)
+                .frame(width: 300)
         }
 }
 

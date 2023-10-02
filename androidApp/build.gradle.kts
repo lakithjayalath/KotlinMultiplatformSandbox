@@ -49,9 +49,12 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.1.1")
     val ktorVersion = "2.3.2"
     implementation ("io.ktor:ktor-client-okhttp:$ktorVersion")
-    val koinVersion = "3.4.0"
+    val koinVersion = "3.5.0"
     implementation("io.insert-koin:koin-core:${koinVersion}")
     implementation("io.insert-koin:koin-android:${koinVersion}")
     val koinComposeVersion = "3.4.3"
     implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
+
+//    implementation("androidx.navigation:navigation-compose:2.5.3")
+//    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
 }
