@@ -47,14 +47,16 @@ dependencies {
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
     implementation("androidx.compose.material3:material3:1.1.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     val ktorVersion = "2.3.2"
     implementation ("io.ktor:ktor-client-okhttp:$ktorVersion")
     val koinVersion = "3.5.0"
-    implementation("io.insert-koin:koin-core:${koinVersion}")
-    implementation("io.insert-koin:koin-android:${koinVersion}")
+//    implementation("io.insert-koin:koin-core:${koinVersion}")
+//    implementation("io.insert-koin:koin-android:${koinVersion}")
+    implementation("io.insert-koin:koin-androidx-compose:3.4.2")
     val koinComposeVersion = "3.4.3"
     implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
 
-//    implementation("androidx.navigation:navigation-compose:2.5.3")
-//    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
 }

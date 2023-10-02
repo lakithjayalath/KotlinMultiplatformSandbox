@@ -18,15 +18,6 @@ kotlin {
         }
     }
 
-//    jvm {
-//        withJava()
-//    }
-//    linuxX64() {
-//        binaries {
-//            executable()
-//        }
-//    }
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -38,7 +29,7 @@ kotlin {
     }
 
     val ktorVersion = "2.3.2"
-    val koinVersion = "3.5.0"
+    val koinVersion = "3.3.3"
 
     sourceSets {
         val commonMain by getting {
@@ -51,7 +42,7 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 //                implementation("io.insert-koin:koin-core:${koinVersion}")
 //                implementation("io.ktor:ktor-client-logging:$ktorVersion")
-//                implementation("io.insert-koin:koin-core:${koinVersion}")
+                implementation("io.insert-koin:koin-core:${koinVersion}")
 //                implementation("io.insert-koin:koin-test:${koinVersion}")
 //                implementation("io.insert-koin:koin-android:${koinVersion}")
                 api("dev.icerock.moko:mvvm-core:0.13.1")
@@ -69,6 +60,7 @@ kotlin {
 //                implementation("io.ktor:ktor-client-android:$ktorVersion")
 //                implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
                 implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+                implementation("io.insert-koin:koin-androidx-compose:3.4.2")
             }
         }
         val iosX64Main by getting
@@ -94,19 +86,8 @@ kotlin {
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
         }
-
-//        val linuxX64Main by getting
-//        val linuxX64Test by getting
     }
 }
-
-//dependencies {
-//    add("kspCommonMainMetadata", project(":test-processor"))
-//    add("kspJvm", project(":test-processor"))
-//    add("kspJvmTest", project(":test-processor")) // Not doing anything because there's no test source set for JVM
-//    // There is no processing for the Linux x64 main source set, because kspLinuxX64 isn't specified
-//    add("kspLinuxX64Test", project(":test-processor"))
-//}
 
 android {
     namespace = "com.example.kotlinmultiplatformsandbox"
