@@ -104,8 +104,8 @@ class MainActivity : ComponentActivity() {
                         Box(
                             modifier = Modifier
                                 .fillMaxSize(1.0f) // it will fill parent box
-                                .padding(8.dp),// padding will help us to give some margin between our text and parent if text greater then our parent size
-                        ) { // contentAlignment will align its content as provided Alignment in our case it's Center
+                                .padding(8.dp),
+                        ) {
                             Column (
                                 verticalArrangement = Arrangement.Center,
                                 horizontalAlignment = Alignment.CenterHorizontally
