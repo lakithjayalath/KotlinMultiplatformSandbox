@@ -35,16 +35,31 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.kotlinmultiplatformsandbox.android.koinguide.MainViewModel
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityRetainedScope
+import org.koin.androidx.scope.activityScope
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), AndroidScopeComponent {
+
+    override val scope: Scope by activityScope()
+    private val hello by inject<String>(named("bye"))
+
     lateinit var navController: NavHostController
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println(hello)
         setContent {
             MyApplicationTheme {
+                val viewModel = getViewModel<MainViewModel>()
+                viewModel.doNetworkCall()
                 navController = rememberNavController()
                 SetupNavGraph(navController = navController)
             }

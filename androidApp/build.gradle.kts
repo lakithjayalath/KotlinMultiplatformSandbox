@@ -38,6 +38,10 @@ android {
     }
 }
 
+val koinVersion = "3.3.3"
+val retroVersion = "2.9.0"
+val okhttpVersion = "5.0.0-alpha.3"
+
 dependencies {
     implementation(project(":shared"))
     implementation("androidx.compose.ui:ui:1.4.3")
@@ -53,10 +57,19 @@ dependencies {
     val koinVersion = "3.5.0"
 //    implementation("io.insert-koin:koin-core:${koinVersion}")
 //    implementation("io.insert-koin:koin-android:${koinVersion}")
-    implementation("io.insert-koin:koin-androidx-compose:3.4.2")
-    val koinComposeVersion = "3.4.3"
-    implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
+//    implementation("io.insert-koin:koin-androidx-compose:3.4.2")
+//    val koinComposeVersion = "3.4.3"
+//    implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
 
     implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
+
+    val koinComposeVersion = "3.4.3"
+    implementation("io.insert-koin:koin-androidx-navigation:$koinComposeVersion")
+    implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
+    implementation("io.insert-koin:koin-test-junit4:$koinComposeVersion")
+// Retrofit
+    implementation("com.squareup.retrofit2:retrofit:${retroVersion}")
+    implementation("com.squareup.retrofit2:converter-moshi:${retroVersion}")
+    implementation("com.squareup.okhttp3:okhttp:${okhttpVersion}")
 }

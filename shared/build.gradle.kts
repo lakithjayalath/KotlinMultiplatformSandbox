@@ -48,6 +48,8 @@ kotlin {
                 api("dev.icerock.moko:mvvm-core:0.13.1")
 //                implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 //                implementation ("org.jetbrains.kotlin:kotlin-serialization-compiler-plugin-embeddable:1.5.21")
+
+
             }
         }
         val commonTest by getting {
