@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -90,8 +88,7 @@ fun HomeScreen(
         var text by remember { mutableStateOf("Loading") }
         var array by remember { mutableStateOf(arrayOf("Loading")) }
         Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = Color.Magenta
+            modifier = Modifier.fillMaxSize()
         ) {
             LaunchedEffect(true) {
                 array = try {
@@ -112,8 +109,7 @@ fun HomeScreen(
                     .padding(8.dp),
             ) {
                 Column (
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.Start
                 ){
                     ElevatedCardExample(text, array)
                     Spacer(modifier = Modifier.height(10.dp))
@@ -122,12 +118,13 @@ fun HomeScreen(
                                navController.navigate(route = Screen.Detail.route)
                         },
                         colors = ButtonDefaults.outlinedButtonColors(backgroundColor = Color.Yellow),
-                        shape = CircleShape,
-                        modifier = Modifier.size(84.dp, 84.dp)) {
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(64.dp)
+                            .padding(start = 16.dp, top = 8.dp, end = 16.dp)) {
                         Text(
                             text = "Go to Detail",
                             fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
                             color = Color.Black
                         )
                     }

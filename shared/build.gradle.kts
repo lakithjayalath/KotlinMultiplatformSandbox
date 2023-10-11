@@ -4,6 +4,7 @@ plugins {
 //    kotlin("native.cocoapods") version "1.8.21"
     id("com.android.library")
 //    id("com.google.devtools.ksp") version "1.6.0"
+//    id("app.cash.sqldelight") version "2.0.0"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
